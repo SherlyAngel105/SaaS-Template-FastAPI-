@@ -1,6 +1,7 @@
 from enum import Enum
 
-from pydantic import BaseModel, BaseSettings, EmailStr
+from pydantic import BaseModel, EmailStr
+from pydantic_settings import BaseSettings
 
 
 class AbstractModel(BaseModel):
@@ -11,7 +12,7 @@ class AbstractModel(BaseModel):
     """
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         use_enum_values = True
 
 

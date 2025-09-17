@@ -24,10 +24,10 @@ def upgrade() -> None:
         sa.Column("created_by", sa.Integer(), nullable=True),
         sa.Column("revoke_link", sa.Boolean(), server_default=sa.text("false")),
         sa.Column(
-            "date_created", sa.TIMESTAMP(timezone=True), server_default=sa.text("now()")
+            "date_created", sa.TIMESTAMP(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP")
         ),
         sa.Column(
-            "date_updated", sa.TIMESTAMP(timezone=True), server_default=sa.text("now()")
+            "date_updated", sa.TIMESTAMP(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP")
         ),
         sa.PrimaryKeyConstraint("id"),
         sa.ForeignKeyConstraint(["created_by"], ["users.id"], ondelete="SET NULL"),
@@ -40,10 +40,10 @@ def upgrade() -> None:
         sa.Column("member_id", sa.Integer(), nullable=False),
         sa.Column("role", sa.String(), nullable=False),
         sa.Column(
-            "date_created", sa.TIMESTAMP(timezone=True), server_default=sa.text("now()")
+            "date_created", sa.TIMESTAMP(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP")
         ),
         sa.Column(
-            "date_updated", sa.TIMESTAMP(timezone=True), server_default=sa.text("now()")
+            "date_updated", sa.TIMESTAMP(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP")
         ),
         sa.PrimaryKeyConstraint("id"),
         sa.ForeignKeyConstraint(["org_id"], ["organization.id"], ondelete="CASCADE"),

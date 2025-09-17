@@ -26,10 +26,10 @@ def upgrade() -> None:
         sa.Column("is_verified", sa.Boolean, nullable=False),
         sa.Column("is_premium", sa.Boolean, nullable=False),
         sa.Column(
-            "date_created", sa.TIMESTAMP(timezone=True), server_default=sa.text("now()")
+            "date_created", sa.TIMESTAMP(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP")
         ),
         sa.Column(
-            "date_updated", sa.TIMESTAMP(timezone=True), server_default=sa.text("now()")
+            "date_updated", sa.TIMESTAMP(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP")
         ),
         sa.PrimaryKeyConstraint("id"),
     )
@@ -39,10 +39,10 @@ def upgrade() -> None:
         sa.Column("user_id", sa.Integer, nullable=False),
         sa.Column("token", sa.String, nullable=False),
         sa.Column(
-            "date_created", sa.TIMESTAMP(timezone=True), server_default=sa.text("now()")
+            "date_created", sa.TIMESTAMP(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP")
         ),
         sa.Column(
-            "date_updated", sa.TIMESTAMP(timezone=True), server_default=sa.text("now()")
+            "date_updated", sa.TIMESTAMP(timezone=True), server_default=sa.text("CURRENT_TIMESTAMP")
         ),
         sa.PrimaryKeyConstraint("id"),
         sa.ForeignKeyConstraint(["user_id"], ["users.id"], ondelete="CASCADE"),
